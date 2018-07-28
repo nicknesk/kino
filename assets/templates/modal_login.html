@@ -1,0 +1,65 @@
+     <!-- Modal window Log in -->
+            <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                      <div class="modal-header">
+                             <h4 class="modal-title" id="myModalLabel">
+                                 <i class="glyphicon glyphicon-modal-window"></i>
+                                 <strong>&nbsp {{_("Log in")}}</strong>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                     <span aria-hidden="true">&times;</span>
+                                 </button>
+                             </h4>
+                      </div>
+
+                      <form method="post"  action="/auth">
+                         {% module xsrf_form_html() %}
+
+                      <div class="modal-body">
+                                  <div class="form-group">
+                                     <div class="input-group">
+                                          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                          <input type="text" required class="form-control" placeholder={{_("login")}} id="login" name="login">
+                                          <div class="input-group-btn">
+                                              <a href="/signin" data-toggle="tooltip" title="Sign Up" class="btn btn-default">
+                                                  <i class="glyphicon glyphicon-pencil"></i>
+                                              </a>
+                                          </div>
+                                     </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <div class="input-group">
+                                       <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                       <input type="password" required class="form-control" placeholder={{_("password")}} id="password" name="password">
+                                       <div class="input-group-btn">
+                                          <a href="#" data-toggle="tooltip" title="Fogot password?" class="btn btn-default">
+                                              <i class="glyphicon glyphicon-question-sign"></i>
+                                          </a>
+                                       </div>
+                                    </div>
+                                  </div>
+                      </div>
+
+                      <div class="modal-footer">
+
+                          <button type="submit" class="btn btn-default pull-right" style="margin-top: -4px;">
+                               &nbsp;&nbsp;{{_("Log in")}}&nbsp;&nbsp;
+                           </button>
+                           <a href="/twitter_login" data-toggle="tooltip" title="Log in with twitter" class="pull-left">
+                               <span class="social-icon">
+                                    <i class="fa fa-twitter fa-2x" aria-hidden="true" style="margin-right:20px;"></i>
+                               </span>
+                        <!--       <img src="{{static_url('img/twitter_circle.png')}}" style="height: 43px;" >  -->
+                           </a>
+                           <a href="/facebook_login"   data-toggle="tooltip" title="Log in with facebook" class="pull-left">
+                               <span class="social-icon">
+                                <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
+                        <!--       <img src="{{static_url('img/fb_circle.png')}}" style="height: 43px;"> -->
+                               </span>
+                           </a>
+                      </div>
+                   </form>
+                </div>
+              </div>
+            </div>
+  <!-- end modal Log in -->

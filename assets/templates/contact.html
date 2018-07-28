@@ -1,0 +1,68 @@
+{%extends "layout-1.html"%}
+
+{%block title%}
+	<title>{{_("CineMonster")}} &middot {{_("Contacts")}}</title>
+{% end %}
+
+
+{%block menu_contact%} <li class="active"> <a href="/contact">{{_("CONTACTS")}}</a> </li>          {% end %}
+
+
+{% block content %}
+
+<h2>{{_("Ask us a question or leave feedback about the site")}}</h2>
+              <hr>
+              <div class="row">
+                <div class="col-lg-4 col-md-4">
+                   <div class="well">
+                      <h3 class="text-center">{{_("Our contacts")}}</h3>
+                      <hr>
+                      <h5>{{_("Contact us and we will reply you within 24 hours")}}</h5>
+                      <p><span class="glyphicon glyphicon-map-marker"></span> Київ, Україна</p>
+                      <p><span class="glyphicon glyphicon-phone"></span> +38 067 5151515</p>
+                      <p><span class="glyphicon glyphicon-envelope"></span> clients@something.com</p>
+                      <hr>
+                      <h5>{{_("Technical support works 24/7")}}</h5>
+                      <p><span class="glyphicon glyphicon-phone"></span> +38 067 5151515</p>
+                      <p><span class="glyphicon glyphicon-envelope"></span> support@something.com</p>
+                   </div>
+                </div>
+
+                <div class="col-lg-1 hidden-md hidden-sm hidden-xs"></div>
+
+                <div class="col-lg-8 col-md-8">
+
+
+                          <form action="post">
+                            <div class="form-group">
+                              <div class="input-group">
+                                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                  <input type="text" class="form-control input-lg" placeholder={{_("Name")}}>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="input-group">
+                                  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                  <input type="text" class="form-control input-lg" placeholder={{_("e-mail")}}>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <textarea name="comment_body" class="form-control"></textarea>
+                            </div>
+                             <div class="form-group">
+                              <button type="submit" class="btn btn-warning pull-right">{{_("submit")}}</button>
+                            </div>
+                          </form>
+                </div>
+
+                <div class="margin-8"></div>
+
+                <div class="lg-col-12">
+                  <h3>{{_("Our location")}}</h3>
+                  <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.
+                                 36485595838!2d30.443508151411724!3d50.45293017937494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!
+                                 3m3!1m2!1s0x40d4cc25608a10c3%3A0x43de2689c058c3d4!2z0JLQuNGF0ZbQtCDQtyDQs9GA0Lg!5e0!3m2!1sru!2sua!4v1498647776170"
+                                 width="100%" height="450" frameborder="0" allowfullscreen style="margin-top: 5px;"></iframe>
+                </div>
+              </div>
+{% end %}

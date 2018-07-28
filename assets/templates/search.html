@@ -1,0 +1,50 @@
+{%extends "layout.html"%}
+{%block title%}
+            <title>KinoMonster &middot {{_("Search")}}</title>
+{% end %}
+
+
+
+{% block content %}
+<h2>{{_("Search results")}}</h2>
+<h4>{{_("Chunk")}}: <code>{{content['chunk']}} </code> </h4>
+        <hr>
+
+    {% for id, name, year, director, summary, icon_file_name in content['films_list'] %}
+            <div class="row">
+               <div class="well clearfix">
+
+                  <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                     <img class="img-thumbnail" src="{{static_url(icon_file_name)}}">
+
+                     <p><strong>{{name}}</strong></p>
+                  </div>
+
+                  <div class="col-lg-8 col-md-8 col-sm-8">
+                     <div class="film-summary">
+                      <p>
+                         {{summary}}
+                      </p>
+                     </div>
+                  </div>
+
+                  <div class="col-lg-12">
+                     <a href="/view?id={{id}}" class="btn btn-warning pull-right">смотреть</a>
+                  </div>
+
+                </div>
+             </div>
+    {% end %}
+            <nav aria-label="films_pagination">   <!-- paginator -->
+                      <ul class="pagination">
+                       {% for paginator_icon, status, page_link in content['paginator'] %}
+                            {% if status == 'disabled' %}
+                                <li class="{{status}}"><a href="#">{{paginator_icon}}</a></li>
+                            {% else %}
+                                <li class="{{status}}"><a href="/search?chunk={{content['chunk']}}&curr_page={{page_link}}">{{paginator_icon}}</a></li>
+                            {% end %}
+                       {% end %}
+                      </ul>
+
+             </nav>
+{% end %}

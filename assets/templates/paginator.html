@@ -1,0 +1,12 @@
+      <nav aria-label="pagination">   <!-- paginator -->
+                      <ul class="pagination">
+                       {% for icon, status, page_link in paginator %}
+                            {% if status == 'disabled' %}
+                                <li class="{{status}}"><a href="#">{{icon}}</a></li>
+                            {% else %}
+                                <li class="{{status}}"><a href="/paginator/general?curr_page={{page_link}}">{{icon}}</a></li>
+                            {% end %}
+                       {% end %}
+                      </ul>
+
+      </nav>

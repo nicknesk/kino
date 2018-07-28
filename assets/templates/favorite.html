@@ -1,0 +1,10 @@
+
+{% if favorite %}
+   <a href="/view/toggle_favorite?id={{film_id}}" >
+       <i data-toggle="tooltip" title="Remove from favorite" style="top:3px; color:#f0ad4e;" class="glyphicon glyphicon-heart pull-right"></i>
+   </a>
+{% else %}
+   <a href="/view/toggle_favorite?id={{film_id}}">
+       <i data-toggle="tooltip" title="Add to favorite"  style="top:3px; color:#f0ad4e;" class="glyphicon glyphicon-heart-empty pull-right"></i>
+   </a>
+{% end %}

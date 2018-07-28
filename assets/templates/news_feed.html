@@ -1,0 +1,25 @@
+ <div class="panel panel-info" id="news_feed">
+                 <div class="panel-heading"><div class="sidebar-header">{{_("Cinema news")}}</div></div>
+                 <div class="panel-body">
+                     <ul class="list-group">
+                        {% for id, date, header in news %}
+                        <li class="list-group-item">  <!-- list-group-warning">  -->
+                          <span class="badge" style="font-size: 75%; float: left;">{{date}}</span>
+                          &nbsp;&nbsp;
+                          <a href="/news?news_id={{id}}">{{header}}</a>
+                        </li>
+                        {% end %}
+
+                        <nav aria-label="...">
+                              <ul class="pager">
+
+                                <li class="previous {{pager[0][0]}}"><a href="/paginator?pager_page={{pager[0][1]}}"><span aria-hidden="true">&larr;</span> Newer</a></li>
+                                <li class="next {{pager[1][0]}}"><a href="/paginator?pager_page={{pager[1][1]}}">Older <span aria-hidden="true">&rarr;</span></a></li>
+
+                              </ul>
+                       </nav>
+
+
+                      </ul>
+                </div>
+              </div>

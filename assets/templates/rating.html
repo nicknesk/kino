@@ -1,0 +1,64 @@
+{%extends "layout.html"%}
+{%block title%}
+	<title>{{_("CineMonster")}} &middot {{_("Rating")}}</title>
+{% end %}
+
+{%block menu_rating %}  <li class="active"><a href="/rating?film_type=0">{{_("RATING")}}</a></li>  {% end %}
+
+{%block content%}
+
+        {% if content['film_type'] == '0' %}
+            <ul class="nav nav-tabs">
+              <li role="presentation" class="active"><a href="/rating?film_type=0">{{_("Films")}}</a></li>
+              <li role="presentation"><a href="/rating?film_type=1">{{_("Serials")}}</a></li>
+            </ul>
+            <h2>{{_("Rating of films")}}</h2>
+         {% else %}
+            <ul class="nav nav-tabs">
+              <li role="presentation" ><a href="/rating?film_type=0">{{_("Films")}}</a></li>
+              <li role="presentation" class="active"><a href="/films?film_type=1">{{_("Serials")}}</a></li>
+            </ul>
+            <h2>{{_("Rating of serials")}}</h2>
+         {% end %}
+
+         <hr>
+
+
+  <table class="table table-striped">
+            <thead>
+              <tr>
+                <th></th>
+                <th class="text-center">
+                    {% if content['film_type'] == '0' %}
+                       {{_("Film")}}
+                    {% else %}
+                       {{_("Serial")}}
+                    {% end %}
+                </th>
+                <th class="text-center">{{_("Year")}}</th>
+                <th class="text-center">{{_("Rating")}}</th>
+              </tr>
+            </thead>
+            <tbody>
+               {% for movie_id, name, year, icon_file_name, rating in content['rating_list']%}
+              <tr>
+                <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                  <img class="img-responsive img-thumbnail" src="{{static_url(icon_file_name)}}" alt="{{name}}" style="height:30%">
+                </td>
+                <td class="vert-align"><a href="/view?id={{movie_id}}">{{name}}</a></td>
+                <td class="text-center vert-align">{{year}}</td>
+                <td class="text-center vert-align"><span class="badge">{{rating}}</span></td>
+              </tr>
+
+            {% end %}
+            </tbody>
+
+
+          </table>
+          <hr>
+          {% module Paginator(content['paginator']) %}
+
+
+
+{% end %}
+

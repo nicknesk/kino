@@ -1,0 +1,17 @@
+         <div class="panel panel-info panel-rating">
+               <div class="panel-heading">
+                   <div class="sidebar-header">
+                       {{block_header}}
+                   </div>
+               </div>
+               <div class="panel-body">
+                  <ul class="list-group">
+                      {% for id, name, rating in ratings %}
+                      <li class="list-group-item list-group-warning">
+                            <span class="badge">{{rating}}</span>
+                            <a href="/view?id={{id}}">{{name}}</a>
+                      </li>
+                     {% end %}
+                 </ul>
+             </div>
+           </div>

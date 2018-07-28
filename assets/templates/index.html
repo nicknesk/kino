@@ -1,0 +1,98 @@
+{%extends "layout.html"%}
+{%block title%}
+	<title>{{_("CineMonster")}} &middot {{_("Home")}}</title>
+{% end %}
+
+{%block menu_index %}  <li class="active"><a href="/">{{_("HOME")}}</a></li>  {% end %}
+
+{%block content%}
+          <h2>{{_("New Films")}}</h2>
+          <hr>
+          <div  class="row img-row-1 animated bounceInDown">
+          {% for count, id, name, file_name in content['new_films'] %}
+                 {% if count < 4 %}
+                     {% module FilmBlock(id, name, file_name) %}
+                 {% end %}
+          {% end %}
+          </div>
+
+
+
+           <div class="row img-row-2 animated bounceInUp">
+           {% for count, id, name, file_name in content['new_films'] %}
+                  {% if  4 <= count < 8 %}
+                     {% module FilmBlock(id, name, file_name) %}
+                  {% end %}
+           {% end %}
+          </div>
+
+
+
+          <div class="margin-8"></div>
+         <br>
+         <h2>{{_("New Serials")}}</h2>
+         <hr>
+            <div class="col-lg-12">
+              <div class="row  img-row-1 wow animated bounceInDown">
+                  {% for count, id, name, file_name in content['new_movie_series'] %}
+                     {% if count < 4 %}
+                         {% module FilmBlock(id, name, file_name) %}
+                     {% end %}
+                 {% end %}
+              </div>
+            </div>
+
+
+            <div class="col-lg-12 ">
+               <div class="row img-row-2 wow animated bounceInUp">
+                 {% for count, id, name, file_name in content['new_movie_series'] %}
+                     {% if 4 <= count < 8 %}
+                         {% module FilmBlock(id, name, file_name) %}
+                     {% end %}
+                 {% end %}
+               </div>
+            </div>
+
+          <div class="margin-8"></div>
+
+          <div class="col-lg-12">
+              <a href="/news?news_id=7"><h3>{{_("How Interstellar was filmed")}}</h3></a>
+              <hr>
+              <p>
+                45 лет исполнилось Кристоферу Нолану — одному из самых успешных режиссеров нашего времени, чьи работы одинаково любимы как взыскательными критиками, так и простыми зрителями. Фильмом изначально занималась студия Paramount. Когда Кристофер Нолан занял место режиссера, студия Warner Bros., которая выпускала его последние фильмы, добилась участия в проекте.
+              </p>
+              <a href="/news?news_id=7" class="btn btn-warning pull-right">{{_("read more")}}</a>
+          </div>
+
+          <div class="margin-8"></div>
+
+          <div class="col-lg-12">
+              <a href="/news?news_id=8"><h3>{{_("Actor Tom Henks shared his impression of the festival")}}</h3></a>
+              <hr>
+              <p>
+                16 февраля в Лондоне состоялась 67-я церемония вручения наград Британской киноакадемии. Леонардо ДиКаприо, Брэд Питт, Анджелина Джоли, Кейт Бланшетт, Хелен Миррен, Эми Адамс, Кристиан Бэйл, Альфонсо Куарон и другие гости и победители премии — в нашем репортаже.
+              </p>
+              <a href="/news?news_id=8" class="btn btn-warning pull-right">{{_("read more")}}</a>
+          </div>
+
+
+          <div class="margin-8 clear"></div>
+
+          <div class="col-lg-12">
+           <a href="/news?news_id=8"><h3>Актер Том Хенкс поделился впечатлением о фестивале</h3></a>
+              <hr>
+              <p>
+                16 февраля в Лондоне состоялась 67-я церемония вручения наград Британской киноакадемии. Леонардо ДиКаприо, Брэд Питт, Анджелина Джоли, Кейт Бланшетт, Хелен Миррен, Эми Адамс, Кристиан Бэйл, Альфонсо Куарон и другие гости и победители премии — в нашем репортаже.
+              </p>
+              <a href="/news?news_id=8" class="btn btn-warning pull-right">{{_("read more")}}</a>
+          </div>
+
+          <div class="margin-8 clear"></div>
+
+    <!--     <video controls="" height="240" width="320">
+              <source src={{static_url("img/movie.mp4")}} type="video/mp4" />
+            Your browser does not support the video tag.
+         </video>  -->
+
+{% end %}
+

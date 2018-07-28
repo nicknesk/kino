@@ -1,0 +1,32 @@
+{%extends "layout.html"%}
+{%block title%}
+            <title>KinoMonster &middot Read</title>
+{% end %}
+
+
+{% block content %}
+         {% if content['news_type'] == '0' %}
+             <h2>{{_("Portal news")}}</h2>
+         {% elif  content['news_type'] == '1'%}
+             <h2>{{_("Cinema news")}}</h2>
+         {% else %}
+             <h2>{{_("Articles")}}</h2>
+          {% end %}
+         <hr>
+
+          <div class="row">
+             <div class="panel panel-default">
+                 <div class="panel-heading">
+                     <div class="panel-title">
+                        <h3>{{content['news_header']}}</h3>
+                        <span class="badge"> {{ content['news_date'] }} </span>
+                        <br>
+                     </div>
+                 </div>
+                 <div class="panel-body" style="font-size: 110%;letter-spacing: 1px;">{{content['news_body']}}</div>
+
+              </div>
+          </div>
+
+
+ {% end %}

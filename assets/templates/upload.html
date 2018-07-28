@@ -1,0 +1,25 @@
+{%extends "layout-2.html"%}
+
+{% block content %}
+{% if status == 'OK' %}
+   {% module ModalWindow('УСПЕХ','Файл '+file+' успешно загружен') %}
+{% elif status == 'error' %}
+   {% module ModalWindow('ОШИБКА','При загрузке файла '+file+' произошла ошибка: '+err_mess) %}
+{% end %}
+
+<div class="col-lg-12">
+    <div class="row"></div>
+        <div class="col-lg-6"></div>
+        <div class="col-lg-6">
+                <p><h1>Select & Upload</h1></p>
+                <form enctype="multipart/form-data" action="/upload" method="post">
+                {% module xsrf_form_html() %}
+                    <div class="input-group form-control">
+                        <label class="control-label">Select File</label>
+                        <input id="input-1a" name="filearg" type="file" class="file" data-show-preview="false">
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>
+{% end %}

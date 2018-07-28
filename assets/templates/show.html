@@ -1,0 +1,77 @@
+{% extends layout.html %}
+
+{%block title%}
+	<title>{{_("CineMonster")}} &middot {{_("View")}}</title>
+{% end %}
+
+
+{% block content %}
+   {% for  name, year, director, summary, trailer_link, icon_file_name, rating in content['film_info'] %}
+		<h2>{{name}}</h2>
+         <div class="embed-responsive embed-responsive-16by9">   <!-- 16:9 aspect ratio -->
+                <iframe class="embed-responsive-item" src="{{ trailer_link }}" frameborder="0" allowfullscreen></iframe>
+         </div>
+         <div class="well info-block text-center">
+                  {{_("Year")}}: <span class="badge">{{year}}</span>
+                  {{_("Rating")}}: <span class="badge">{{rating}}</span>
+                  {{_("Directed by")}}: <span class="badge">{{director}}</span>
+                  {% if content['current_user_name'] %}
+                      {% module Favorite(content['favorite'], content['film_id'] ) %}
+                  {% end %}
+
+         </div>
+
+         <div class="margin-8"></div>
+
+		 <h3>{{_("Description")}} {{name}}</h3>
+         <hr>
+         <div class="well">
+            {{summary}}
+         </div>
+
+         <div class="margin-8"></div>
+ 	{% end %}
+
+    <h4>{{_("Reviews")}}</h4>
+    <hr>
+    {% for author, body in content['comments'] %}
+          <div class="panel panel-info hidden-xs">
+                <div class="panel-heading"><i class="glyphicon glyphicon-user"></i> &nbsp {{author}}</div>
+                <div class="panel-body">{{body}}</div>
+          </div>
+    {% end %}
+
+         <!-- Comments form -->
+            <div class="margin-8"></div>
+            <h4>{{_("Leave your feedback")}}</h4>
+            <hr>
+            <form method="post" action="/view?id={{content['film_id']}}" id="review">
+               {% module xsrf_form_html() %}
+               {% if content['current_user_name'] %}
+                    <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                              <input type="text" class="form-control input-lg" placeholder="{{content['current_user_name']}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <textarea name="comment_body" class="form-control" ></textarea>
+                    </div>
+                     <div class="form-group">
+                      <button type="submit" class="btn btn btn-warning btn-lg pull-right" >{{_("submit")}}</button>
+                    </div>
+                {%  else %}
+                    <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                              <input type="text" class="form-control input-lg" placeholder= {{_("Leave_a_comment_can_only_registered_users")}} disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <textarea name="comment_body" class="form-control" ></textarea>
+                    </div>
+                {%   end %}
+
+           </form>
+
+{% end %}

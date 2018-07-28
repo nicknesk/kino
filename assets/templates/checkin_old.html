@@ -1,0 +1,130 @@
+{%extends "layout-2.html"%}
+
+{%block title%}
+	<title>{{_("CineMonster")}} &middot {{_("Сheck in")}}</title>
+{% end %}
+
+
+
+{% block content %}
+
+<div class="row">
+     <div class="col-lg-3 col-md-3 col-sm-3 hidden-xs">
+                          <div class="panel panel-default">
+                              <div class="panel-heading">
+                                  <div class="panel-title text-center"> <h3>{{_("Our contacts")}}</h3> </div>
+                              </div>
+                              <div class="panel-body">
+                                   <p> <h4>{{_("Customer references")}}</h4></p>
+
+                                    <p>  <span class="glyphicon glyphicon-map-marker"></span> Київ, Україна </p>
+                                    <p>  <span class="glyphicon glyphicon-phone"></span> +38 067 5151515   </p>
+                                    <p>  <span class="glyphicon glyphicon-envelope"></span> clients@something.com </p>
+                                    <hr>
+                                    <p><h4>{{_("Technical support")}}</h4></p>
+
+                                    <p>  <span class="glyphicon glyphicon-phone"></span> +38 067 5151516 </p>
+                                    <p>  <span class="glyphicon glyphicon-phone"></span> +38 067 5151517 </p>
+                                    <p>  <span class="glyphicon glyphicon-envelope"></span> support@something.com </p>
+                              </div>
+                          </div>
+     </div>
+
+    <div class="col-lg-1 hidden-md hidden-sm hidden-xs"></div>
+
+     <div class="col-lg-5 col-md-6 col-sm-9 col-xs-12">
+        <h2>{{_("Sign Up")}}</h2>
+        <hr>
+              <div id="showErrorMessage" style="display: none">
+                    <h4>
+                        <div class="alert alert-danger alert-dismissable">
+                         <!--    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> -->
+                             <strong>{{_("ERROR")}}!</strong>
+                             <span id="errorMessage"></span>
+                        </div>
+                    </h4>
+               </div>
+
+
+
+        {% if status == 'error' %}
+                <div>
+                    <h4>
+                    {% if message == 'passwords_doesnt_match' %}
+                        <div class="alert alert-danger alert-dismissable">
+                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                             <strong>{{_("ERROR")}}!</strong> &nbsp;
+                             {{_("The passwords you entered does not match")}}
+                        </div>
+                          <hr>
+                    {% elif message == 'user_exists' %}
+                         <div class="alert alert-danger alert-dismissable">
+                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                             <strong>{{_("ERROR")}}!</strong> &nbsp;
+                             {{_("A user with such login or e-mail already exists")}}
+                         </div>
+                          <hr>
+                    {% end %}
+                    </h4>
+                </div>
+        {% elif not status  %}
+                <h4>{{_("Enter your registration information")}}</h4>
+        {% end %}
+
+        {% if status == 'success' %}
+                <div>
+                     <div class="alert alert-success alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                         <h3><strong>{{_("SUCCESS")}}!</strong>&nbsp;{{_("A confirmation letter has been sent to your e-mail address")}}</h3>
+                     </div>
+                </div>
+        {% else %}
+                <form id="sign_up_form" method="post" action="/signin" name="sign_in_form">
+                    {% module xsrf_form_html() %}
+                    <div class="form-group">
+                        <div class="input-group">
+                           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                           <input id="login" type="text" required class="form-control" name="login" placeholder={{_("login")}}>
+                       </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                              <input type="text" required class="form-control" name="name" placeholder={{_("Name")}}>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                           <input id="email" type="text" required class="form-control" name="email" placeholder="your_mail@any_domain">
+                        </div>
+                    </div>
+
+                     <div class="form-group">
+                        <div class="input-group">
+                           <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                           <input id="password" type="password" required class="form-control" name="password" placeholder={{_("password")}}>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                           <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                           <input id="password_confirm" type="password" required class="form-control" name="password_confirm" placeholder={{_("confirm_password")}}>
+                        </div>
+                    </div>
+
+                     <div class="form-group">
+                      <button id="sign_up_btn" type="button"  class="btn btn-warning btn-lg pull-right">
+                          {{_("sign up me")}}
+                      </button>
+                    </div>
+                </form>
+
+        {% end %}
+    </div>
+    <div class="col-lg-3"></div>
+</div>
+{% end %}

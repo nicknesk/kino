@@ -1,0 +1,47 @@
+       <div class="panel panel-info">  <!-- Checkin panel -->
+            <div class="panel-heading"><div class="sidebar-header">Вход</div></div>
+            <div class="panel-body">
+
+              <form method="post"  action="/auth">
+                {% module xsrf_form_html() %}
+                {% if content['current_user_name'] %}
+                  <div class="form-group">
+                     <div class="input-group">
+                          <input type="text"  class="form-control" placeholder="{{ content['current_user_name'] }}"  name="login" disabled>
+                          <div class="input-group-btn">
+                              <a href="#" data-toggle="tooltip" title="Signed" class="btn btn-default"><i class="glyphicon glyphicon-ok"></i></a>
+                          </div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                       <input type="password" class="form-control" placeholder="вход выполнен"  name="password" disabled>
+                       <div class="input-group-btn">
+                          <a href="#" data-toggle="tooltip" title="Profile" class="btn btn-default" type="button"><i class="glyphicon glyphicon-cog"></i></a>
+                       </div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-warning pull-right">выйти</button>
+              {% else %}
+                  <div class="form-group">
+                     <div class="input-group">
+                          <input type="text"  class="form-control" placeholder="Логин" id="login" name="login">
+                          <div class="input-group-btn">
+                              <a href="/signin" data-toggle="tooltip" title="Sign In" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
+                          </div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                       <input type="password" class="form-control" placeholder="Пароль" id="password" name="password">
+                       <div class="input-group-btn">
+                          <a href="#" data-toggle="tooltip" title="Fogot password?" class="btn btn-default" type="button"><i class="glyphicon glyphicon-question-sign"></i></a>
+                       </div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-warning pull-right">войти</button>
+              {% end %}
+              </form>
+
+            </div>
+          </div>

@@ -1,0 +1,4 @@
+tornado==4.5.1
+psycopg2==2.7.1
+SQLAlchemy==1.1.10
+

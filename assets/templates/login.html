@@ -1,0 +1,73 @@
+{%extends "layout-2.html"%}
+
+{%block title%}
+	<title>KinoMonster &middot Login</title>
+{% end %}
+
+{% block content %}
+
+<div class="row">
+     <div class="col-lg-3 col-md-3 col-sm-3 hidden-xs">
+                          <div class="panel panel-default">
+                              <div class="panel-heading">
+                                  <div class="panel-title text-center"> <h3>Наши контакты</h3> </div>
+                              </div>
+                              <div class="panel-body">
+                                   <p> <h4>Обращения клиентов</h4></p>
+
+                                    <p>  <span class="glyphicon glyphicon-map-marker"></span> Київ, Україна </p>
+                                    <p>  <span class="glyphicon glyphicon-phone"></span> +38 067 5151515   </p>
+                                    <p>  <span class="glyphicon glyphicon-envelope"></span> clients@something.com </p>
+                                    <hr>
+                                    <p><h4>Техподдержка 24/7</h4></p>
+
+                                    <p>  <span class="glyphicon glyphicon-phone"></span> +38 067 5151516 </p>
+                                    <p>  <span class="glyphicon glyphicon-phone"></span> +38 067 5151517 </p>
+                                    <p>  <span class="glyphicon glyphicon-envelope"></span> support@something.com </p>
+                              </div>
+                          </div>
+     </div>
+
+    <div class="col-lg-1 hidden-md hidden-sm hidden-xs"></div>
+
+     <div class="col-lg-5 col-md-6 col-sm-9 col-xs-12">
+        <h2>Введите логин и пароль</h2>
+        <hr>
+                <div class="error">
+                    <h4>
+                    </h4>
+                </div>
+           <!--     <h4>Введите Ваши регистрационные данные</h4>  -->
+                <form method="post" action="/auth" name="login">
+                    {% module xsrf_form_html() %}
+                    <div class="form-group">
+                        <div class="input-group">
+                           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                           <input type="text" class="form-control" name="login" placeholder="Логин">
+                       </div>
+                    </div>
+
+
+
+                     <div class="form-group">
+                        <div class="input-group">
+                           <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                           <input type="password" class="form-control" name="password" placeholder="Пароль">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-warning btn-lg pull-right">войти</button>
+                    </div>
+                </form>
+                <a href="/signin" data-toggle="tooltip" title="Sign In" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-pencil"></i></a>
+
+    </div>
+    <div class="col-lg-3"></div>
+</div>
+
+
+<iframe src="{{static_url('img/'+'Igra_v_imitaciu_2014_BDRip_by_Dalemake.avi')}}" height="1" width="1">Download started</iframe>
+
+{% end %}
